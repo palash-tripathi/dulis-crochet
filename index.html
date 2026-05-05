@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duli's Crochet — Handmade with Love</title>
+  
+  <!-- Favicon using logo -->
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #fdf8fb;
+      --card-bg:  #ffffff;
+      --text:     #42272f;
+      --accent:   #c47fa0;
+      --accent-dk:#a8637f;
+      --shadow:   rgba(170, 90, 130, 0.10);
+      --border:   #f0d6e4;
+      --radius:   20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    /* ─── Header ─── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 248, 251, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    header img.logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+
+    .header-text { display: flex; flex-direction: column; }
+
+    .header-text h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.3rem, 2.8vw, 1.75rem);
+      font-style: italic;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+    }
+
+    .header-text .tagline {
+      font-size: 0.72rem;
+      color: var(--text);
+      opacity: 0.55;
+      font-style: italic;
+      letter-spacing: 0.09em;
+      margin-top: 2px;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      text-align: center;
+      padding: 52px 24px 90px;
+      background: url('assets/images/owl theme bg image.JPG') center 40% / cover no-repeat;
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg,
+        rgba(252, 224, 240, 0.65) 0%,
+        rgba(253, 245, 250, 0.58) 45%,
+        rgba(246, 228, 238, 0.65) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.9;
+      margin-bottom: 18px;
+      font-weight: 400;
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      color: var(--text);
+      line-height: 1.18;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .hero h2 em {
+      color: var(--accent);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      color: var(--text);
+      opacity: 0.7;
+      max-width: 400px;
+      margin: 0 auto 32px;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.8);
+      border: 1.5px solid var(--border);
+      color: var(--accent);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.83rem;
+      font-style: italic;
+      padding: 9px 24px;
+      border-radius: 99px;
+      letter-spacing: 0.03em;
+      backdrop-filter: blur(8px);
+    }
+
+    /* ─── Section Label ─── */
+    .section-label {
+      text-align: center;
+      padding: 20px 24px 10px;
+    }
+
+    .section-label h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 10px auto 0;
+      border: none;
+    }
+
+    /* ─── Product Grid ─── */
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding: 24px 48px 72px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 960px) {
+      .catalog { grid-template-columns: repeat(2, 1fr); padding: 20px 28px 56px; gap: 20px; }
+    }
+    @media (max-width: 560px) {
+      .catalog { grid-template-columns: 1fr; padding: 16px 16px 48px; gap: 16px; }
+      header { padding: 12px 20px; }
+      .hero { padding: 56px 20px 44px; }
+    }
+
+    /* ─── Category Header ─── */
+    .cat-header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 28px 0 8px;
+    }
+
+    .cat-header:first-child { padding-top: 0; }
+
+    .cat-header::before,
+    .cat-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border));
+    }
+
+    .cat-header::after {
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    .cat-header h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      padding: 0 8px;
+    }
+
+    /* ─── Product Card ─── */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid rgba(240, 214, 228, 0.7);
+      box-shadow: 0 2px 14px var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(22px);
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 44px rgba(170, 90, 130, 0.17);
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #f8ecf3;
+      position: relative;
+    }
+
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-img-wrap img { transform: scale(1.07); }
+
+    /* Gallery arrows */
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      background: rgba(255,255,255,0.82);
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--accent-dk);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: background 0.18s, opacity 0.18s;
+      opacity: 0.75;
+    }
+
+    .gallery-arrow:hover { background: #fff; opacity: 1; }
+
+    .gallery-arrow.prev { left: 8px; }
+    .gallery-arrow.next { right: 8px; }
+
+    .gallery-arrow svg { width: 14px; height: 14px; pointer-events: none; }
+
+    .gallery-dots {
+      position: absolute;
+      bottom: 9px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      z-index: 3;
+    }
+
+    .gallery-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      padding: 0;
+    }
+
+    .gallery-dot.active {
+      background: #fff;
+      transform: scale(1.3);
+    }
+
+    .card-img-wrap .placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--accent);
+      opacity: 0.38;
+    }
+
+    .card-img-wrap .placeholder svg { width: 44px; height: 44px; }
+    .card-img-wrap .placeholder span { font-size: 0.72rem; font-style: italic; }
+
+    .card-body {
+      padding: 20px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.81rem;
+      color: var(--text);
+      opacity: 0.58;
+      line-height: 1.68;
+      flex: 1;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .card-price {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.18rem;
+      color: var(--accent-dk);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .card-btns { display: flex; flex-direction: column; gap: 8px; }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 11px 18px;
+      border-radius: 99px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.79rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.22s ease;
+    }
+
+    .btn-wa {
+      background: linear-gradient(135deg, #cc88ab 0%, #a8637f 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(168, 99, 127, 0.32);
+    }
+
+    .btn-wa:hover {
+      background: linear-gradient(135deg, #c07899 0%, #9a5571 100%);
+      box-shadow: 0 6px 20px rgba(168, 99, 127, 0.44);
+      transform: translateY(-1px);
+    }
+
+    .btn-ig {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-ig:hover {
+      background: #fdf0f5;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: linear-gradient(180deg, #fdf8fb 0%, #fce6f2 100%);
+      border-top: 1px solid var(--border);
+      padding: 40px 32px 30px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-links a:hover { opacity: 0.65; }
+    .footer-links svg { width: 18px; height: 18px; }
+
+    .footer-copy {
+      font-size: 0.74rem;
+      color: var(--text);
+      opacity: 0.42;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Lightbox ─── */
+    .card-img-wrap { cursor: zoom-in; }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(30, 10, 18, 0.88);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: 92vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      animation: lb-in 0.22s ease;
+    }
+
+    @keyframes lb-in {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    #lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.75;
+      line-height: 1;
+      transition: opacity 0.15s;
+    }
+
+    #lightbox-close:hover { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER
+══════════════════════════════════════ -->
+<header>
+  <img src="assets/logo.png" alt="Duli's Crochet logo" class="logo" />
+  <div class="header-text">
+    <h1>Duli's Crochet</h1>
+    <span class="tagline">✦ handmade with love ✦</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">✦ San Diego, California ✦</span>
+    <h2>Handmade with<br><em>love &amp; care</em></h2>
+    <p>Every piece crocheted by hand, one stitch at a time. Browse the collection and order your favourite today.</p>
+    <span class="hero-badge">Custom orders always welcome</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SECTION LABEL
+══════════════════════════════════════ -->
+<div class="section-label">
+  <h3>Our Collection</h3>
+  <hr class="divider" />
+</div>
+
+<!-- ══════════════════════════════════════
+     PRODUCT CATALOG
+══════════════════════════════════════ -->
+<main class="catalog" id="catalog">
+  <!-- Cards are generated by the script below -->
+</main>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-links">
+    <!-- REPLACE: wa.me link -->
+    <a href="https://wa.me/919850180415" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <!-- WhatsApp icon -->
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.22-1.57A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.69.93.99-3.6-.24-.38A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.66 0 5.16 1.04 7.04 2.92A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.47-7.4c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17 0-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+      </svg>
+      WhatsApp
+    </a>
+
+    <!-- REPLACE: Instagram URL -->
+    <a href="https://www.instagram.com/dulis.crochet/" target="_blank" rel="noopener" aria-label="Instagram">
+      <!-- Instagram icon -->
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324A6.162 6.162 0 0 0 12 5.838zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+      </svg>
+      Instagram
+    </a>
+  </div>
+  <p class="footer-copy">© 2025 Duli's Crochet · Made with love in San Diego</p>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close" aria-label="Close">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- ══════════════════════════════════════
+     CATALOG DATA + RENDER SCRIPT
+══════════════════════════════════════ -->
+<script>
+  // ─── Product Data ───────────────────────────────────────────────
+  // Edit names, descriptions, and prices here as needed.
+  // Image paths point to assets/images/ — swap in your real photos.
+  const products = [
+    // ── Bags & Purses ──────────────────────────────────────────
+    {
+      id: 1,
+      category: "Bags & Purses",
+      name: "Owl Crossbody Bag",
+      desc: "Brown owl-shaped crossbody bag with large embroidered eyes and a chain strap. Roomy, sturdy, and a true statement piece.",
+      price: "$65.00",
+      images: [
+        "assets/images/IMG_0291.jpeg",
+        "assets/images/IMG_0317.jpeg"
+      ]
+    },
+    {
+      id: 2,
+      category: "Bags & Purses",
+      name: "Owl Coin Purse",
+      desc: "Zippered coin purse in lime green with a big-eyed owl face in brown and purple. Compact enough for cards and cash, charming enough to show off.",
+      price: "$28.00",
+      images: [
+        "assets/images/IMG_0278.jpeg",
+        "assets/images/IMG_0317.jpeg"
+      ]
+    },
+    {
+      id: 3,
+      category: "Bags & Purses",
+      name: "Watermelon Wristlet Purse",
+      desc: "Zippered wristlet in red and green watermelon stripes with a cherry button detail and a bright lined interior. A sweet everyday carry.",
+      price: "$30.00",
+      images: [
+        "assets/images/IMG_0078.jpeg",
+        "assets/images/IMG_0081.jpeg"
+      ]
+    },
+    // ── Amigurumi ─────────────────────────────────────────────
+    {
+      id: 5,
+      category: "Amigurumi",
+      name: "Gengar Car Charm",
+      desc: "Handmade Gengar Pokémon amigurumi in deep purple with red eyes and a hanging cord. Perfect for your rear-view mirror.",
+      price: "$25.00",
+      images: [
+        "assets/images/IMG_0243.jpeg",
+        "assets/images/IMG_0253.jpeg",
+        "assets/images/IMG_0244.jpeg",
+        "assets/images/IMG_0289.jpeg"
+      ]
+    },
+    {
+      id: 6,
+      category: "Amigurumi",
+      name: "Monster Key Holder",
+      desc: "Quirky green-and-red monster amigurumi that doubles as a key holder. Keys clip inside his big red mouth — functional and hilarious.",
+      price: "$35.00",
+      images: [
+        "assets/images/6FC4230F-1356-442E-94F4-6BFEC941F5C1.PNG",
+        "assets/images/9D5BFD23-02A2-4F7A-85B9-83A439BC1F4F.jpg",
+        "assets/images/C3B74F8B-6F91-41FC-8661-EC76B276E103.jpg"
+      ]
+    },
+    // ── Home & Decor ──────────────────────────────────────────
+    {
+      id: 7,
+      category: "Home & Decor",
+      name: "Mug Cozy",
+      desc: "Tan cotton mug cozy with a cheerful green scalloped trim. Keeps your drink warm and your hands cool.",
+      price: "$18.00",
+      images: [
+        "assets/images/IMG_0266.jpeg",
+        "assets/images/IMG_0262.jpeg",
+        "assets/images/IMG_0326.jpeg"
+      ]
+    },
+    {
+      id: 8,
+      category: "Home & Decor",
+      name: "Sunglasses Case",
+      desc: "Crochet sunglasses case with a fun eye-and-lashes design in vibrant multicolour. Keeps your shades safe in style.",
+      price: "$20.00",
+      images: ["assets/images/IMG_7954.jpeg"]
+    },
+    // ── Accessories ───────────────────────────────────────────
+    {
+      id: 9,
+      category: "Accessories",
+      name: "Vine Charger Cable Wrap",
+      desc: "Crochet vine wrap for your phone charger cable, with tiny green leaves along the full length. Protects the cable and looks adorable.",
+      price: "$28.00",
+      images: [
+        "assets/images/IMG_0342.jpg",
+        "assets/images/IMG_9990.jpeg"
+      ]
+    },
+    {
+      id: 10,
+      category: "Accessories",
+      name: "Arrow Bookmark",
+      desc: "Colourful crochet arrow bookmark in jewel tones of teal, orange, and purple. Slips into your book in the most whimsical way.",
+      price: "$15.00",
+      images: ["assets/images/91E36DA5-E7B6-4DC6-824A-1194347383C9.jpg"]
+    }
+  ];
+
+  // ─── WhatsApp & Instagram ────────────────────────────────────────
+  // REPLACE: wa.me link — update the number below (country code + number, no spaces or dashes)
+  const WA_NUMBER = "919850180415";
+
+  // REPLACE: Instagram URL — update your handle below
+  const IG_URL = "https://www.instagram.com/dulis.crochet/";
+
+  // ─── Icon SVGs ──────────────────────────────────────────────────
+  const waIconSVG = `<svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.6 5.97L0 24l6.22-1.57A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 22c-1.85 0-3.66-.5-5.24-1.44l-.37-.22-3.69.93.99-3.6-.24-.38A9.93 9.93 0 0 1 2 12C2 6.48 6.48 2 12 2c2.66 0 5.16 1.04 7.04 2.92A9.93 9.93 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.47-7.4c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17 0-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>`;
+
+  const igIconSVG = `<svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324A6.162 6.162 0 0 0 12 5.838zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>`;
+
+  // Placeholder yarn ball SVG shown when image hasn't been replaced yet
+  const placeholderSVG = `
+    <div class="placeholder">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="28" fill="#f5dce8"/>
+        <circle cx="32" cy="32" r="18" fill="#c47fa0" opacity="0.5"/>
+        <ellipse cx="32" cy="32" rx="7" ry="18" fill="none" stroke="#c47fa0" stroke-width="2"/>
+        <line x1="14" y1="32" x2="50" y2="32" stroke="#c47fa0" stroke-width="2"/>
+      </svg>
+      <span>photo coming soon</span>
+    </div>`;
+
+  // ─── Render Cards grouped by category ───────────────────────────
+  const catalog = document.getElementById("catalog");
+
+  const grouped = {};
+  products.forEach(p => {
+    if (!grouped[p.category]) grouped[p.category] = [];
+    grouped[p.category].push(p);
+  });
+
+  let isFirst = true;
+  Object.entries(grouped).forEach(([category, items]) => {
+    const header = document.createElement("div");
+    header.className = "cat-header";
+    if (isFirst) { header.style.paddingTop = "0"; isFirst = false; }
+    header.innerHTML = `<h3>${category}</h3>`;
+    catalog.appendChild(header);
+
+    items.forEach(product => {
+      const waText = encodeURIComponent(`Hi! I'm interested in ${product.name} 🌸`);
+      const waURL = `https://wa.me/${WA_NUMBER}?text=${waText}`;
+      const imgs = product.images || [product.img];
+      const multi = imgs.length > 1;
+
+      const arrowSVGLeft  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
+      const arrowSVGRight = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+      const dotsHTML = multi
+        ? `<div class="gallery-dots">${imgs.map((_, i) => `<button class="gallery-dot${i === 0 ? ' active' : ''}" data-idx="${i}"></button>`).join('')}</div>`
+        : '';
+
+      const card = document.createElement("article");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="card-img-wrap">
+          <img src="${imgs[0]}" alt="${product.name}" loading="lazy" />
+          ${multi ? `<button class="gallery-arrow prev" aria-label="Previous">${arrowSVGLeft}</button>` : ''}
+          ${multi ? `<button class="gallery-arrow next" aria-label="Next">${arrowSVGRight}</button>` : ''}
+          ${dotsHTML}
+        </div>
+        <div class="card-body">
+          <h2 class="card-name">${product.name}</h2>
+          <p class="card-desc">${product.desc}</p>
+          <p class="card-price">${product.price}</p>
+          <div class="card-btns">
+            <a class="btn btn-wa" href="${waURL}" target="_blank" rel="noopener">
+              ${waIconSVG} Order on WhatsApp
+            </a>
+            <a class="btn btn-ig" href="${IG_URL}" target="_blank" rel="noopener">
+              ${igIconSVG} View on Instagram
+            </a>
+          </div>
+        </div>
+      `;
+
+      // Wire up image error fallback (done in JS to avoid inline attribute quoting bugs)
+      const imgEl = card.querySelector('img');
+      imgEl.onerror = () => {
+        imgEl.style.display = 'none';
+        imgEl.parentElement.insertAdjacentHTML('beforeend', placeholderSVG);
+      };
+
+      // Wire up gallery arrows
+      if (multi) {
+        let idx = 0;
+        const dots = card.querySelectorAll('.gallery-dot');
+        const setImg = (n) => {
+          idx = (n + imgs.length) % imgs.length;
+          imgEl.style.display = '';
+          imgEl.src = imgs[idx];
+          dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        };
+        card.querySelector('.prev').addEventListener('click', e => { e.stopPropagation(); setImg(idx - 1); });
+        card.querySelector('.next').addEventListener('click', e => { e.stopPropagation(); setImg(idx + 1); });
+        dots.forEach(d => d.addEventListener('click', e => { e.stopPropagation(); setImg(+d.dataset.idx); }));
+      }
+
+      catalog.appendChild(card);
+    });
+  });
+
+  // Fade-up entrance animation as cards scroll into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+  // Lightbox
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  document.getElementById('catalog').addEventListener('click', e => {
+    const img = e.target.closest('.card-img-wrap img');
+    if (!img) return;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
