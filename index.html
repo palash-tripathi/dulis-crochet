@@ -146,18 +146,28 @@
     }
 
     @media (max-width: 768px) {
-      header { padding: 0 16px; height: 52px; gap: 10px; }
+      header { padding: 0 16px; height: 52px; gap: 10px; flex-wrap: wrap; align-content: center; }
       .logo-img { width: 34px; height: 34px; }
       .brand-sub { display: none; }
       .brand-name { font-size: 1rem; }
       .cat-nav {
+        order: 10;
+        width: 100vw;
+        margin-left: -16px;
+        margin-right: -16px;
         overflow-x: auto;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        max-width: 50vw;
+        max-width: 100vw;
+        border-top: 1px solid var(--parchment);
+        padding: 6px 16px;
+        background: rgba(250,245,238,0.97);
+        justify-content: flex-start;
+        gap: 6px;
       }
       .cat-nav::-webkit-scrollbar { display: none; }
+      header { height: auto; padding-bottom: 0; }
     }
 
     /* ─── HERO ─────────────────────────────── */
@@ -1199,7 +1209,7 @@
   const IG_URL = "https://www.instagram.com/dulis.crochet/";
 
   const products = [
-    { id: 1, category: "Bags & Purses", name: "Owl Crossbody Bag", desc: "Owl-shaped crossbody bag with large embroidered eyes and a chain strap. Roomy, sturdy, and a true statement piece.", price: "$40", images: ["assets/images/IMG_0291.jpeg","assets/images/IMG_0317.jpeg"] },
+    { id: 1, category: "Bags & Purses", name: "Owl Crossbody Bag", desc: "Owl-shaped crossbody bag with large embroidered eyes and an adjustable chain strap. Roomy, sturdy, and a true statement piece.", price: "$40", images: ["assets/images/IMG_0291.jpeg","assets/images/IMG_0317.jpeg"] },
     { id: 2, category: "Bags & Purses", name: "Owl Coin Purse", desc: "Zippered coin purse with a big-eyed owl face. Compact enough for cards and cash, charming enough to show off.", price: "$10", images: ["assets/images/IMG_0278.jpeg","assets/images/IMG_0317.jpeg"] },
     { id: 3, category: "Bags & Purses", name: "Cherry Wristlet Purse", desc: "Zippered wristlet with a cherry button detail and a bright lined interior. A sweet everyday carry.", price: "$15", images: ["assets/images/IMG_0078.jpeg","assets/images/IMG_0081.jpeg"] },
     { id: 5, category: "Amigurumi", name: "Gengar Car Charm", desc: "Handmade Gengar Pokémon amigurumi with a hanging cord. Perfect for your rear-view mirror.", price: "$12", images: ["assets/images/IMG_0243.jpeg","assets/images/IMG_0253.jpeg","assets/images/IMG_0244.jpeg","assets/images/IMG_0289.jpeg"] },
