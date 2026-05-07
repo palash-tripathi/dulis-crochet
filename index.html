@@ -1258,7 +1258,7 @@
 
   catSections.forEach(({ el }) => navObserver.observe(el));
 
- as cards scroll into view
+  // Fade-up entrance animation as cards scroll into view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
