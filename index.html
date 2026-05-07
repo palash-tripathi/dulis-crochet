@@ -173,7 +173,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: none;
+      background: radial-gradient(ellipse at center, rgba(250,245,238,0.6) 0%, rgba(250,245,238,0.25) 60%, rgba(250,245,238,0.05) 100%);
     }
 
     /* Decorative stitched border frame */
@@ -190,12 +190,13 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      max-width: 680px;
+      max-width: 640px;
       padding: 48px 48px 44px;
-      background: rgba(255, 249, 243, 0.72);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-radius: 6px;
+      background: rgba(255, 249, 243, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 8px;
+      margin: 0 20px;
     }
 
     /* Staggered entrance */
@@ -223,6 +224,7 @@
       color: var(--rose);
       margin-bottom: 28px;
       font-weight: 500;
+      text-shadow: 0 1px 8px rgba(255,255,255,0.9);
     }
 
     .hero-eyebrow::before,
@@ -242,23 +244,26 @@
       margin-bottom: 24px;
       font-weight: 300;
       letter-spacing: -0.01em;
+      text-shadow: 0 2px 16px rgba(255,255,255,0.85), 0 1px 4px rgba(255,255,255,1);
+      color: #1a0f0a;
     }
 
     .hero h2 em {
       color: var(--rose);
       font-style: italic;
-      font-weight: 400;
-      text-shadow: 0 2px 18px rgba(255,255,255,0.55), 0 1px 4px rgba(255,255,255,0.8);
+      font-weight: 600;
+      text-shadow: 0 2px 18px rgba(255,255,255,0.9), 0 1px 6px rgba(255,255,255,1);
     }
 
     .hero-sub {
       font-size: 0.95rem;
-      color: var(--ink-mid);
+      color: #1a0f0a;
       max-width: 400px;
       margin: 0 auto 44px;
       line-height: 1.9;
-      font-weight: 300;
+      font-weight: 500;
       letter-spacing: 0.01em;
+      text-shadow: 0 1px 12px rgba(255,255,255,1), 0 0 24px rgba(255,255,255,0.9);
     }
 
     .hero-actions {
@@ -298,15 +303,15 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      background: rgba(250,245,238,0.7);
+      background: rgba(250,245,238,0.92);
       color: var(--ink-mid);
       font-family: 'DM Sans', sans-serif;
       font-size: 0.78rem;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.06em;
       padding: 14px 28px;
       border-radius: 2px;
-      border: 1px solid var(--parchment);
+      border: 1px solid rgba(196,131,106,0.4);
       text-decoration: none;
       backdrop-filter: blur(8px);
       transition: all 0.22s;
@@ -969,6 +974,51 @@
       footer { padding: 56px 24px 40px; }
       .footer-inner { grid-template-columns: 1fr; gap: 36px; }
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    /* ─── MOBILE ────────────────────────────── */
+    @media (max-width: 480px) {
+      /* Header */
+      header { height: 56px; padding: 0 16px; gap: 10px; }
+      .logo-text { display: none; }
+      .cat-nav { max-width: calc(100vw - 70px); gap: 6px; }
+      .cat-nav a { font-size: 0.6rem; padding: 4px 10px; }
+
+      /* Hero */
+      .hero { min-height: 55vw; }
+      .hero::after { inset: 12px; }
+      .hero-content { padding: 28px 22px 28px; margin: 0 12px; border-radius: 6px; }
+      .hero h2 { font-size: clamp(2rem, 11vw, 3.2rem); margin-bottom: 14px; }
+      .hero-eyebrow { font-size: 0.58rem; margin-bottom: 16px; }
+      .hero-sub { font-size: 0.82rem; margin-bottom: 28px; line-height: 1.7; }
+      .hero-actions { gap: 10px; }
+      .btn-primary, .btn-ghost { font-size: 0.7rem; padding: 12px 22px; }
+      .hero-scroll { display: none; }
+
+      /* Pills */
+      .hero-pills { gap: 8px; padding: 16px 16px; }
+      .hero-pill { font-size: 0.62rem; padding: 6px 14px; }
+
+      /* Section header */
+      .section-header { padding: 48px 16px 12px; }
+
+      /* Catalog */
+      .catalog { padding: 16px 12px 48px; gap: 14px; }
+      .card-body { padding: 16px 16px 18px; }
+      .card-name { font-size: 1.1rem; }
+      .card-desc { font-size: 0.75rem; margin-bottom: 14px; }
+      .card-price { font-size: 1.25rem; }
+      .btn { font-size: 0.68rem; padding: 8px 12px; }
+
+      /* How to order */
+      .how-section { padding: 48px 16px; }
+      .how-steps { flex-direction: column; gap: 28px; }
+      .how-step + .how-step::before { display: none; }
+
+      /* Footer */
+      footer { padding: 48px 16px 32px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
     }
 
     /* ─── LIGHTBOX ──────────────────────────── */
