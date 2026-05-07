@@ -53,8 +53,8 @@
     }
 
     header img.logo {
-      width: 46px;
-      height: 46px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
@@ -62,6 +62,48 @@
     }
 
     .header-text { display: flex; flex-direction: column; }
+
+    /* ─── Category Nav ─── */
+    .cat-nav {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .cat-nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: var(--accent-dk);
+      text-decoration: none;
+      padding: 6px 13px;
+      border-radius: 99px;
+      border: 1.5px solid var(--border);
+      background: rgba(255,255,255,0.7);
+      letter-spacing: 0.03em;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+
+    .cat-nav a:hover, .cat-nav a.active {
+      background: #fce6f2;
+      border-color: var(--accent);
+      color: var(--accent-dk);
+    }
+
+    @media (max-width: 700px) {
+      .cat-nav {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+      }
+      .cat-nav::-webkit-scrollbar { display: none; }
+    }
 
     .header-text h1 {
       font-family: 'Playfair Display', Georgia, serif;
@@ -85,13 +127,13 @@
     /* ─── Hero ─── */
     .hero {
       text-align: center;
-      padding: 52px 24px 90px;
+      padding: 80px 24px 100px;
       background: url('assets/images/owl theme bg image.JPG') center 40% / cover no-repeat;
       position: relative;
       overflow: hidden;
-      min-height: 520px;
+      min-height: 640px;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
     }
 
@@ -100,33 +142,41 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(160deg,
-        rgba(252, 224, 240, 0.65) 0%,
-        rgba(253, 245, 250, 0.58) 45%,
-        rgba(246, 228, 238, 0.65) 100%);
+        rgba(252, 224, 240, 0.72) 0%,
+        rgba(253, 245, 250, 0.62) 45%,
+        rgba(246, 228, 238, 0.72) 100%);
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
+      max-width: 560px;
     }
 
     .hero-eyebrow {
-      display: block;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--accent-dk);
       opacity: 0.9;
-      margin-bottom: 18px;
-      font-weight: 400;
+      margin-bottom: 22px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.7);
+      padding: 6px 18px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(6px);
     }
 
     .hero h2 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
       color: var(--text);
-      line-height: 1.18;
-      margin-bottom: 18px;
+      line-height: 1.15;
+      margin-bottom: 20px;
       font-weight: 700;
     }
 
@@ -137,48 +187,154 @@
     }
 
     .hero p {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--text);
-      opacity: 0.7;
-      max-width: 400px;
-      margin: 0 auto 32px;
-      line-height: 1.75;
+      opacity: 0.72;
+      max-width: 420px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
       font-weight: 300;
     }
 
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #cc88ab 0%, #a8637f 100%);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 14px 32px;
+      border-radius: 99px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(168, 99, 127, 0.38);
+      transition: all 0.22s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .hero-btn-primary:hover {
+      background: linear-gradient(135deg, #c07899 0%, #9a5571 100%);
+      box-shadow: 0 10px 32px rgba(168, 99, 127, 0.5);
+      transform: translateY(-2px);
+    }
+
     .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.82);
       border: 1.5px solid var(--border);
-      color: var(--accent);
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 0.83rem;
+      color: var(--accent-dk);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 400;
       font-style: italic;
-      padding: 9px 24px;
+      padding: 13px 24px;
       border-radius: 99px;
       letter-spacing: 0.03em;
       backdrop-filter: blur(8px);
+      text-decoration: none;
+      transition: background 0.2s;
     }
+
+    .hero-badge:hover { background: rgba(255,255,255,0.96); }
 
     /* ─── Section Label ─── */
     .section-label {
       text-align: center;
-      padding: 20px 24px 10px;
+      padding: 48px 24px 14px;
     }
 
     .section-label h3 {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.3rem;
-      color: var(--accent);
-      letter-spacing: 0.03em;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--text);
+      letter-spacing: 0.02em;
+      font-weight: 700;
     }
 
+    .section-label h3 span { color: var(--accent); font-style: italic; }
+
     .divider {
-      width: 48px;
-      height: 1.5px;
+      width: 64px;
+      height: 2px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      margin: 10px auto 0;
+      margin: 14px auto 0;
       border: none;
+    }
+
+    /* ─── Perks Strip ─── */
+    .perks {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      padding: 0 40px;
+      max-width: 860px;
+      margin: 0 auto 8px;
+    }
+
+    .perk {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 28px 20px;
+      position: relative;
+    }
+
+    .perk + .perk::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .perk-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #fce6f2, #f5d0e6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .perk-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.01em;
+    }
+
+    .perk-desc {
+      font-size: 0.76rem;
+      color: var(--text);
+      opacity: 0.55;
+      text-align: center;
+      line-height: 1.55;
+    }
+
+    @media (max-width: 560px) {
+      .perks { flex-direction: column; padding: 0 24px; gap: 4px; }
+      .perk + .perk::before { display: none; }
+      .perk { padding: 16px 12px; flex-direction: row; text-align: left; gap: 14px; }
+      .perk-title, .perk-desc { text-align: left; }
     }
 
     /* ─── Product Grid ─── */
@@ -316,19 +472,39 @@
     }
 
     .gallery-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: rgba(255,255,255,0.55);
       border: none;
       cursor: pointer;
       transition: background 0.2s, transform 0.2s;
       padding: 0;
+      /* Larger tap target on mobile */
+      min-width: 20px;
+      min-height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .gallery-dot.active {
+    .gallery-dot::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: inherit;
+      display: block;
+    }
+
+    .gallery-dot.active::after {
       background: #fff;
       transform: scale(1.3);
+    }
+
+    @media (max-width: 700px) {
+      .gallery-arrow { display: none; }
+      .gallery-dots { bottom: 6px; gap: 2px; }
     }
 
     .card-img-wrap .placeholder {
@@ -355,18 +531,18 @@
 
     .card-name {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.05rem;
-      font-weight: 600;
+      font-size: 1.12rem;
+      font-weight: 700;
       color: var(--text);
       margin-bottom: 8px;
       line-height: 1.3;
     }
 
     .card-desc {
-      font-size: 0.81rem;
+      font-size: 0.82rem;
       color: var(--text);
-      opacity: 0.58;
-      line-height: 1.68;
+      opacity: 0.62;
+      line-height: 1.7;
       flex: 1;
       margin-bottom: 16px;
       font-weight: 300;
@@ -374,10 +550,22 @@
 
     .card-price {
       font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.18rem;
+      font-size: 1.28rem;
       color: var(--accent-dk);
       font-weight: 700;
       margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card-price::before {
+      content: '';
+      display: inline-block;
+      width: 22px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: 2px;
     }
 
     .card-btns { display: flex; flex-direction: column; gap: 8px; }
@@ -428,8 +616,34 @@
     footer {
       background: linear-gradient(180deg, #fdf8fb 0%, #fce6f2 100%);
       border-top: 1px solid var(--border);
-      padding: 40px 32px 30px;
+      padding: 52px 32px 36px;
       text-align: center;
+    }
+
+    .footer-tagline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    .footer-about {
+      font-size: 0.82rem;
+      color: var(--text);
+      opacity: 0.55;
+      max-width: 420px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .footer-divider {
+      width: 48px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      border: none;
+      margin: 0 auto 28px;
     }
 
     .footer-links {
@@ -519,8 +733,7 @@
   <div class="header-text">
     <h1>Duli's Crochet</h1>
     <span class="tagline">✦ handmade with love ✦</span>
-  </div>
-</header>
+  </div>  <nav class="cat-nav" id="cat-nav"></nav></header>
 
 <!-- ══════════════════════════════════════
      HERO
@@ -529,18 +742,51 @@
   <div class="hero-content">
     <span class="hero-eyebrow">✦ San Diego, California ✦</span>
     <h2>Handmade with<br><em>love &amp; care</em></h2>
-    <p>Every piece crocheted by hand, one stitch at a time. Browse the collection and order your favourite today.</p>
-    <span class="hero-badge">Custom orders always welcome</span>
+    <p>Every piece crocheted by hand, one stitch at a time — made to order, made with heart. Browse the collection and order your favourite today.</p>
+    <div class="hero-actions">
+      <button class="hero-btn-primary" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">
+        Browse Collection
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <a class="hero-badge" href="https://wa.me/919850180415" target="_blank" rel="noopener">Custom orders welcome 🧶</a>
+    </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════
+     PERKS STRIP
+══════════════════════════════════════ -->
+<div class="perks">
+  <div class="perk">
+    <div class="perk-icon">🧶</div>
+    <div>
+      <p class="perk-title">Truly Handmade</p>
+      <p class="perk-desc">Every stitch crocheted by hand with care and love</p>
+    </div>
+  </div>
+  <div class="perk">
+    <div class="perk-icon">✨</div>
+    <div>
+      <p class="perk-title">Custom Orders</p>
+      <p class="perk-desc">Want a specific color or size? Just ask!</p>
+    </div>
+  </div>
+  <div class="perk">
+    <div class="perk-icon">📸</div>
+    <div>
+      <p class="perk-title">Made to Order</p>
+      <p class="perk-desc">Colors may vary based on available yarn — each piece unique</p>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════════
      SECTION LABEL
 ══════════════════════════════════════ -->
 <div class="section-label">
-  <h3>Our Collection</h3>
+  <h3>Our <span>Collection</span></h3>
   <hr class="divider" />
-  <p style="font-size:0.78rem;color:#a8637f;opacity:0.85;margin-top:12px;font-style:italic;letter-spacing:0.03em;">✦ All pieces are handmade to order — colors may vary slightly depending on the yarn available. Each item is one of a kind! ✦</p>
+  <p style="font-size:0.92rem;color:#7a3050;opacity:1;margin-top:12px;font-style:italic;letter-spacing:0.03em;font-weight:500;">✦ All pieces are handmade to order — colors may vary slightly depending on the yarn available. Each item is one of a kind! ✦</p>
 </div>
 
 <!-- ══════════════════════════════════════
@@ -554,6 +800,9 @@
      FOOTER
 ══════════════════════════════════════ -->
 <footer>
+  <p class="footer-tagline">“Handmade with love, one stitch at a time.”</p>
+  <p class="footer-about">Duli’s Crochet is a small handmade business based in San Diego, California. Every piece is lovingly crocheted to order — custom colors and sizes always welcome.</p>
+  <hr class="footer-divider" />
   <div class="footer-links">
     <!-- REPLACE: wa.me link -->
     <a href="https://wa.me/919850180415" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -706,8 +955,8 @@
     {
       id: 12,
       category: "Clothing",
-      name: "Crochet Vest",
-      desc: "Handmade crochet vest in white and dark red. A versatile, boho-chic piece that layers beautifully. Price listed for small & medium — subject to change for larger sizes.",
+      name: "Crochet Frock",
+      desc: "Handmade crochet frock in white and dark red. A beautiful, boho-chic dress piece. Note: only the frock is included — the t-shirt underneath is not included. Price listed for small & medium — subject to change for larger sizes.",
       price: "$100.00",
       images: ["assets/images/IMG_8045.jpeg"]
     },
@@ -746,7 +995,7 @@
       id: 16,
       category: "Bags & Purses",
       name: "Shell Coin Purse",
-      desc: "Zippered coin purse featuring a delicate shell stitch pattern in multicolour. Compact and charming.",
+      desc: "Coin purse featuring a delicate shell stitch pattern in multicolour, secured with a magnetic button closure. Compact and charming.",
       price: "$10.00",
       images: ["assets/images/c54c8241-cc1c-41a8-a86b-0218dcfabf6b.JPG"]
     },
@@ -781,14 +1030,6 @@
       desc: "Handmade teal granny square table mat, approximately 12×12 in. A sturdy and stylish addition to any table setting. Priced per mat.",
       price: "$5.00 per mat",
       images: ["assets/images/IMG_0327.jpeg"]
-    },
-    {
-      id: 20,
-      category: "Home & Decor",
-      name: "Crochet Lace Doily",
-      desc: "Elegant handmade crochet lace doily in soft teal. A timeless decorative piece for tables, shelves, or frames.",
-      price: "$30.00",
-      images: ["assets/images/7C6244EC-6681-4BFD-B319-ABBE58CD1B52.PNG"]
     },
     // ── More Clothing ─────────────────────────────────────────
     {
@@ -914,7 +1155,7 @@
               ${waIconSVG} Order on WhatsApp
             </a>
             <a class="btn btn-ig" href="${IG_URL}" target="_blank" rel="noopener">
-              ${igIconSVG} View on Instagram
+              ${igIconSVG} DM us on Instagram
             </a>
           </div>
         </div>
@@ -927,26 +1168,97 @@
         imgEl.parentElement.insertAdjacentHTML('beforeend', placeholderSVG);
       };
 
-      // Wire up gallery arrows
+      // Wire up gallery arrows + touch swipe
       if (multi) {
         let idx = 0;
         const dots = card.querySelectorAll('.gallery-dot');
+        const imgWrap = card.querySelector('.card-img-wrap');
+
         const setImg = (n) => {
           idx = (n + imgs.length) % imgs.length;
           imgEl.style.display = '';
           imgEl.src = imgs[idx];
           dots.forEach((d, i) => d.classList.toggle('active', i === idx));
         };
+
         card.querySelector('.prev').addEventListener('click', e => { e.stopPropagation(); setImg(idx - 1); });
         card.querySelector('.next').addEventListener('click', e => { e.stopPropagation(); setImg(idx + 1); });
         dots.forEach(d => d.addEventListener('click', e => { e.stopPropagation(); setImg(+d.dataset.idx); }));
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let isDragging = false;
+
+        imgWrap.addEventListener('touchstart', e => {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          isDragging = false;
+        }, { passive: true });
+
+        imgWrap.addEventListener('touchmove', e => {
+          const dx = e.touches[0].clientX - touchStartX;
+          const dy = e.touches[0].clientY - touchStartY;
+          if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
+            isDragging = true;
+            e.stopPropagation();
+          }
+        }, { passive: true });
+
+        imgWrap.addEventListener('touchend', e => {
+          if (!isDragging) return;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 40) {
+            setImg(dx < 0 ? idx + 1 : idx - 1);
+          }
+          isDragging = false;
+        }, { passive: true });
       }
 
       catalog.appendChild(card);
     });
   });
 
-  // Fade-up entrance animation as cards scroll into view
+  // ─── Populate category nav ───────────────────────────────────────
+  const catNav = document.getElementById('cat-nav');
+  Object.keys(grouped).forEach(cat => {
+    const id = 'cat-' + cat.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    // Tag the matching cat-header in the DOM
+    const headers = catalog.querySelectorAll('.cat-header h3');
+    headers.forEach(h => {
+      if (h.textContent === cat) h.closest('.cat-header').id = id;
+    });
+    const a = document.createElement('a');
+    a.href = '#' + id;
+    a.textContent = cat;
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    catNav.appendChild(a);
+  });
+
+  // ─── Active nav highlight on scroll ─────────────────────────────
+  const catSections = Array.from(catNav.querySelectorAll('a')).map(a => ({
+    a,
+    el: document.getElementById(a.getAttribute('href').slice(1))
+  })).filter(x => x.el);
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        catSections.forEach(({ a, el }) => {
+          a.style.background = el === entry.target ? '#fce6f2' : '';
+          a.style.borderColor = el === entry.target ? 'var(--accent)' : '';
+          a.style.fontWeight  = el === entry.target ? '600' : '';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  catSections.forEach(({ el }) => navObserver.observe(el));
+
+ as cards scroll into view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
