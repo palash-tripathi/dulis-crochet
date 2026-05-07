@@ -146,13 +146,16 @@
     }
 
     @media (max-width: 768px) {
-      header { padding: 0 20px; height: 60px; }
+      header { padding: 0 16px; height: 52px; gap: 10px; }
+      .logo-img { width: 34px; height: 34px; }
+      .brand-sub { display: none; }
+      .brand-name { font-size: 1rem; }
       .cat-nav {
         overflow-x: auto;
         flex-wrap: nowrap;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
-        max-width: calc(100vw - 180px);
+        max-width: 50vw;
       }
       .cat-nav::-webkit-scrollbar { display: none; }
     }
@@ -160,7 +163,7 @@
     /* ─── HERO ─────────────────────────────── */
     .hero {
       position: relative;
-      min-height: 60vh;
+      min-height: 100svh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -733,7 +736,7 @@
     /* ─── FLOATING WA BUTTON ─────────────────── */
     .wa-float {
       position: fixed;
-      bottom: 28px;
+      bottom: max(28px, calc(16px + env(safe-area-inset-bottom)));
       right: 28px;
       z-index: 500;
       width: 56px;
@@ -976,34 +979,29 @@
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
     }
 
-    /* ─── MOBILE ────────────────────────────── */
-    @media (max-width: 480px) {
-      /* Header */
-      header { height: 56px; padding: 0 16px; gap: 10px; }
-      .logo-text { display: none; }
-      .cat-nav { max-width: calc(100vw - 70px); gap: 6px; }
-      .cat-nav a { font-size: 0.6rem; padding: 4px 10px; }
-
-      /* Hero */
-      .hero { min-height: 55vw; }
-      .hero::after { inset: 12px; }
-      .hero-content { padding: 28px 22px 28px; margin: 0 12px; border-radius: 6px; }
-      .hero h2 { font-size: clamp(2rem, 11vw, 3.2rem); margin-bottom: 14px; }
-      .hero-eyebrow { font-size: 0.58rem; margin-bottom: 16px; }
-      .hero-sub { font-size: 0.82rem; margin-bottom: 28px; line-height: 1.7; }
-      .hero-actions { gap: 10px; }
-      .btn-primary, .btn-ghost { font-size: 0.7rem; padding: 12px 22px; }
+    /* ─── MOBILE (≤600px) ───────────────────── */
+    @media (max-width: 600px) {
+      /* Hero frame & scroll */
+      .hero::after { display: none; }
       .hero-scroll { display: none; }
 
+      /* Hero content card */
+      .hero-content { padding: 80px 20px 60px; margin: 0; border-radius: 0; width: 100%; max-width: 100%; }
+      .hero h2 { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 14px; }
+      .hero-eyebrow { font-size: 0.58rem; margin-bottom: 16px; }
+      .hero-sub { font-size: 0.85rem; margin-bottom: 28px; line-height: 1.7; }
+      .hero-actions { gap: 10px; }
+      .btn-primary, .btn-ghost { font-size: 0.72rem; padding: 13px 24px; }
+
       /* Pills */
-      .hero-pills { gap: 8px; padding: 16px 16px; }
+      .hero-pills { gap: 8px; padding: 14px 16px; flex-wrap: wrap; }
       .hero-pill { font-size: 0.62rem; padding: 6px 14px; }
 
       /* Section header */
       .section-header { padding: 48px 16px 12px; }
 
       /* Catalog */
-      .catalog { padding: 16px 12px 48px; gap: 14px; }
+      .catalog { padding: 16px 12px 56px; gap: 14px; }
       .card-body { padding: 16px 16px 18px; }
       .card-name { font-size: 1.1rem; }
       .card-desc { font-size: 0.75rem; margin-bottom: 14px; }
@@ -1015,10 +1013,17 @@
       .how-steps { flex-direction: column; gap: 28px; }
       .how-step + .how-step::before { display: none; }
 
-      /* Footer */
-      footer { padding: 48px 16px 32px; }
+      /* Footer safe area */
+      footer {
+        padding: 48px 16px calc(32px + env(safe-area-inset-bottom));
+      }
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
+    }
+
+    /* Pills stack earlier */
+    @media (max-width: 900px) {
+      .hero-pills { flex-direction: column; align-items: center; gap: 8px; }
     }
 
     /* ─── LIGHTBOX ──────────────────────────── */
